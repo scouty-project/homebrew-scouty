@@ -15,8 +15,6 @@ cask "scouty" do
     strategy :electron_builder
   end
 
-  auto_updates true
-
   app "Scouty.app"
 
   # App non ancora firmata con un certificato Apple: senza questo macOS la blocca come "danneggiata". Da togliere quando sara' firmata.
