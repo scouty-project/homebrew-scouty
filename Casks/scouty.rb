@@ -2,8 +2,8 @@ cask "scouty" do
   arch arm: "-arm64"
 
   version "1.0.0"
-  sha256 arm:   "f4846f35ba2adbe51b37ec70f2b426c735b0c97af908e90ee250985054ae373b",
-         intel: "437961d8fdd259e80051fcde405d14bc8e42496175219ef60d4dc710b79def1e"
+  sha256 arm:   "c3de0f4e38f3eb09df0ce87d4e4c17ff94492f325fc46f0bd642e7bbd3702fdd",
+         intel: "f2cca1a7f43c5c8e847f48b5aaada48bf5613283d566f46e53644538c1bf148d"
 
   url "https://scoutyapp.it/download/desktop/Scouty-#{version}#{arch}.dmg"
   name "Scouty"
