@@ -1,5 +1,5 @@
 cask "scouty" do
-  arch arm: "-arm64", intel: ""
+  arch arm: "-arm64"
 
   version "1.0.0"
   sha256 arm:   "f4846f35ba2adbe51b37ec70f2b426c735b0c97af908e90ee250985054ae373b",
@@ -15,11 +15,15 @@ cask "scouty" do
     strategy :electron_builder
   end
 
+  depends_on :macos
+
   app "Scouty.app"
 
-  # App non ancora firmata con un certificato Apple: senza questo macOS la blocca come "danneggiata". Da togliere quando sara' firmata.
-  postflight do
-    system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{appdir}/Scouty.app"]
+  # App non ancora firmata con un certificato Apple: senza questo macOS la blocca come
+  # "danneggiata". Da togliere quando sara' firmata e notarizzata.
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Scouty.app"],
+                          writable_paths: ["Scouty.app"], writable_base: :appdir, must_succeed: false
   end
 
   zap trash: [
