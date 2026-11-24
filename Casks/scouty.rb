@@ -19,13 +19,6 @@ cask "scouty" do
 
   app "Scouty.app"
 
-  # App non ancora firmata con un certificato Apple: senza questo macOS la blocca come
-  # "danneggiata". Da togliere quando sara' firmata e notarizzata.
-  postflight_steps do
-    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Scouty.app"],
-                          writable_paths: ["Scouty.app"], writable_base: :appdir, must_succeed: false
-  end
-
   zap trash: [
     "~/Library/Application Support/Scouty",
     "~/Library/Preferences/it.scoutyapp.desktop.plist",
